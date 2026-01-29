@@ -1,3 +1,5 @@
+import GlowCard from "./GlowCard";
+
 function About() {
   return (
     <section className="section reveal" id="about">
@@ -29,21 +31,25 @@ function About() {
         </div>
       </div>
       
-      <div className="experience-section" style={{marginTop: '40px'}}>
-        <h3 style={{color: '#c2a4ff', marginBottom: '16px'}}>Experience</h3>
-        <div className="experience-item">
-          <div className="experience-period">2024 - Present</div>
-          <div className="experience-title">Frontend Developer Intern — Company / Project</div>
-          <div className="experience-description">Worked on building responsive UI components using React, implemented animations and accessibility improvements, and collaborated with design to ship features.</div>
-        </div>
+      <hr className="section-sep" />
 
-        <div className="experience-item">
-          <div className="experience-period">2023 - 2024</div>
-          <div className="experience-title">Student / Research Assistant — AI & ML Projects</div>
-          <div className="experience-description">Contributed to machine learning experiments, data preprocessing, and created visualization dashboards to present results to stakeholders.</div>
+      <div className="experience-section" style={{marginTop: '24px'}}>
+        <h3 className="section-subtitle">Experience</h3>
+        {/* Single experience entry copied from LinkedIn */}
+        <div style={{marginTop: '12px'}}>
+          <GlowCard>
+            <div className="experience-item">
+              <div className="experience-period">Jun 2025 - Jul 2025 · 2 mos</div>
+              <div className="experience-title">Front-end development intern — Cognifyz Technologies · Internship</div>
+              <div className="experience-description" style={{marginTop: '8px'}}>
+                📌 Working on front-end development tasks assigned by Cognifyz. 📌 Gaining hands-on experience in HTML, CSS, JavaScript, and responsive web design. 📌 Submitting tasks through video demonstrations and project uploads. 📌 Promoting work via LinkedIn using #cognifyz #cognifyzTech #cognifyzTechnologies.
+              </div>
+              <div className="experience-description" style={{marginTop: '10px', fontWeight: 600, color: '#c2a4ff'}}>
+                Skills: Front-End Development · HTML · Cascading Style Sheets (CSS) · JavaScript · Responsive Web Design
+              </div>
+            </div>
+          </GlowCard>
         </div>
-
-        <p style={{marginTop: '16px', color: '#aaa'}}>For full and up-to-date experience details, see my LinkedIn: <a href="https://www.linkedin.com/in/prudhvi-poojitha-aa15092b3/" target="_blank" rel="noopener noreferrer" className="contact-link">LinkedIn profile</a>.</p>
       </div>
     </section>
   );

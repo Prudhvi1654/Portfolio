@@ -4,14 +4,14 @@ function Skills() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   
   const softwares = [
-    { name: "HTML", icon: "HTML", url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
-    { name: "CSS", icon: "CSS", url: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
-    { name: "JavaScript", icon: "JS", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+    { name: "HTML", icon: "html", url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+    { name: "CSS", icon: "css", url: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+    { name: "JavaScript", icon: ".js", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
     { name: "React", icon: "⚛", url: "https://react.dev/" },
-    { name: "Python", icon: "Py", url: "https://www.python.org/" },
-    { name: "Flask", icon: "Fl", url: "https://flask.palletsprojects.com/" },
-    { name: "MongoDB", icon: "DB", url: "https://www.mongodb.com/" },
-    { name: "OpenCV", icon: "CV", url: "https://opencv.org/" },
+    { name: "Python", icon: ".py", url: "https://www.python.org/" },
+    { name: "Flask", icon: "fl", url: "https://flask.palletsprojects.com/" },
+    { name: "MongoDB", icon: "MB", url: "https://www.mongodb.com/" },
+    { name: "OpenCV", icon: "cv", url: "https://opencv.org/" },
     { name: "Node.js", icon: "Nd", url: "https://nodejs.org/" },
     { name: "GitHub", icon: "GH", url: "https://github.com/" },
     { name: "AWS", icon: "AWS", url: "https://aws.amazon.com/" }

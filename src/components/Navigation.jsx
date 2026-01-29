@@ -54,7 +54,7 @@ function Navigation() {
   return (
     <nav className="top-nav">
       <div className="top-nav-left">
-        prudhvi.1008@gmail.com
+        prudhvi.dev
       </div>
       <div className="top-nav-right">
         {navItems.map((item) => (
