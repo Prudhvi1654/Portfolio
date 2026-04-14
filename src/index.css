@@ -17,6 +17,7 @@ body {
   line-height: 1.7;
   letter-spacing: 0.5px;
   font-weight: 400;
+  overflow-x: hidden;
 }
 
 /* Top Navigation Bar */
@@ -26,71 +27,138 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
-  backdrop-filter: blur(12px);
-  background: linear-gradient(135deg, rgba(11, 8, 12, 0.95) 0%, rgba(26, 19, 34, 0.95) 100%);
-  padding: 20px 60px;
-  border-bottom: 1px solid rgba(194, 164, 255, 0.15);
+  padding: 18px 40px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  background: transparent;
+  border-bottom: none;
+  box-shadow: none;
 }
 
 .top-nav-left {
-  font-size: 0.9rem;
-  color: #999;
-  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  color: #cfc7ff;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+  position: absolute;
+  left: 32px;
 }
 
 .top-nav-right {
   display: flex;
-  gap: 40px;
+  gap: 36px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
+/* Hamburger button for small screens */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.hamburger-box {
+  width: 28px;
+  height: 18px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: 28px;
+  height: 3px;
+  background-color: #c2a4ff;
+  display: block;
+  position: absolute;
+  left: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  border-radius: 2px;
+}
+
+.hamburger-inner { top: 50%; transform: translateY(-50%); }
+.hamburger-inner::before { content: ''; top: -8px; }
+.hamburger-inner::after { content: ''; top: 8px; }
+
+.hamburger-box.open .hamburger-inner {
+  transform: rotate(45deg);
+}
+.hamburger-box.open .hamburger-inner::before {
+  transform: rotate(90deg) translateX(-0.5px);
+  top: 0;
+}
+.hamburger-box.open .hamburger-inner::after { opacity: 0; }
+
+/* Mobile menu (hidden on desktop) */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 1100;
+  background: linear-gradient(180deg, rgba(11,8,12,0.95), rgba(26,19,34,0.95));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  padding: 24px;
+}
+
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: #fff; text-decoration: none; font-size: 1.35rem; padding: 12px 18px; border-radius: 8px; }
+.mobile-menu a:hover { background: rgba(194,164,255,0.06); transform: translateY(-4px); }
+
 .top-nav-link {
-  color: #ccc;
+  color: #e6e0ff;
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.25s ease;
   cursor: pointer;
   position: relative;
-  padding-bottom: 5px;
+  padding: 8px 12px;
+  border-radius: 8px;
 }
 
 .top-nav-link::after {
   content: '';
   position: absolute;
-  bottom: -3px;
-  left: 0;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 0;
-  height: 2px;
+  height: 3px;
   background: linear-gradient(90deg, #7f40ff, #c2a4ff);
-  transition: width 0.3s ease;
+  transition: width 0.25s ease;
+  border-radius: 2px;
 }
 
 .top-nav-link:hover,
 .top-nav-link.active {
-  color: #c2a4ff;
+  color: #ffffff;
+  background: rgba(194,164,255,0.06);
+  transform: translateY(-3px);
 }
 
 .top-nav-link:hover::after,
 .top-nav-link.active::after {
-  width: 100%;
+  width: 56%;
 }
 
-/* Social Icons - Left Side */
+/* Social Icons - Left Side (removed) */
 .social-sidebar {
-  position: fixed;
-  left: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+  /* Sidebar removed: keep markup for fallback but hide by default */
+  display: none !important;
 }
 
 .social-icon {
@@ -509,7 +577,8 @@ body {
   background: transparent;
   padding: 80px 40px;
   margin: 60px auto;
-  max-width: 1200px;
+  max-width: 100%;
+  width: 100%;
   border-radius: 0;
   box-shadow: none;
   animation: fadeInUp 0.8s ease-out;
@@ -775,7 +844,7 @@ body {
 
 .software-name {
   font-size: 0.9rem;
-  color: #aaa;
+  color: #ffffff;
   font-weight: 600;
   letter-spacing: 0.6px;
   text-transform: capitalize;
@@ -1079,27 +1148,301 @@ button:hover, input[type="submit"]:hover {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+/* Mobile First - Extra Small (320px - 480px) */
+@media (max-width: 480px) {
+  * {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
   .top-nav {
-    padding: 12px 20px;
-    gap: 15px;
+    padding: 10px 12px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .header-divider::before {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
   }
 
   .top-nav-left {
-    font-size: 0.75rem;
-    min-width: 150px;
+    font-size: 0.65rem;
+    min-width: 100px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
   .top-nav-right {
-    gap: 12px;
+    gap: 8px;
     flex-wrap: wrap;
   }
 
+  /* Show hamburger and hide inline links on very small screens */
+  .hamburger { display: inline-block; }
+  .top-nav-right .top-nav-link { display: none; }
+
   .top-nav-link {
+    font-size: 0.65rem;
+    letter-spacing: 0.3px;
+  }
+
+  .social-sidebar {
+    left: 10px;
+    gap: 10px;
+    bottom: 80px;
+  }
+
+  .social-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+
+  .resume-btn {
+    bottom: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    font-size: 0.6rem;
+    gap: 3px;
+  }
+
+  .header {
+    padding: 80px 12px 30px 12px;
+    min-height: auto;
+    margin-top: 50px;
+  }
+
+  .header-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .header-image {
+    width: 100%;
+    height: 180px;
+    margin: 0 auto;
+  }
+
+  .yellow-circle {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-img {
+    width: 130px;
+  }
+
+  .header-content h1 {
+    font-size: 1.5rem;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+  }
+
+  .header-content h1 .highlight {
+    padding: 2px 8px;
+    font-size: 1.3rem;
+  }
+
+  .header-content p {
     font-size: 0.75rem;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .about-item {
+    padding: 15px;
+  }
+
+  .about-item h3 {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+
+  .education-year {
+    font-size: 0.8rem;
+  }
+
+  .education-school {
+    font-size: 0.85rem;
+  }
+
+  .education-detail {
+    font-size: 0.75rem;
+  }
+
+  .contact-info {
+    font-size: 0.8rem;
+    margin: 8px 0;
+  }
+
+  .software-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .software-item {
+    padding: 10px;
+  }
+
+  .software-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+
+  .software-name {
+    font-size: 0.65rem;
+  }
+
+  .section {
+    padding: 25px 12px;
+    margin: 20px auto;
+    border-radius: 8px;
+    width: calc(100% - 24px);
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+  }
+
+  .experience-item {
+    padding: 12px;
+    margin-bottom: 12px;
+    border-left-width: 3px;
+  }
+
+  .experience-period {
+    font-size: 0.75rem;
+  }
+
+  .experience-title {
+    font-size: 0.85rem;
+  }
+
+  .experience-description {
+    font-size: 0.75rem;
+  }
+
+  .contact-container {
+    min-height: auto;
+    padding: 20px 0;
+  }
+
+  .contact-card {
+    max-width: 100%;
+    padding: 20px 12px;
+  }
+
+  .contact-card h2 {
+    font-size: 1.3rem;
+  }
+
+  .form-group label {
+    font-size: 0.8rem;
+  }
+
+  input, textarea {
+    font-size: 0.85rem;
+    padding: 10px 10px;
+  }
+
+  button, input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    width: 100%;
+  }
+
+  .footer-section {
+    padding: 25px 12px;
+  }
+
+  .footer-title {
+    font-size: 1.3rem;
+  }
+
+  .skill-badge {
+    padding: 6px 12px;
+    font-size: 0.7rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .footer-col h3 {
+    font-size: 0.9rem;
+  }
+
+  .footer-col a,
+  .footer-col p {
+    font-size: 0.75rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-credit {
+    font-size: 0.7rem;
+  }
+
+  .footer-socials {
+    gap: 8px;
+  }
+
+  .footer-social-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .dot-1 { width: 12px; height: 12px; top: 5%; left: -5%; }
+  .dot-2 { width: 10px; height: 10px; top: 8%; left: 2%; }
+  .dot-3 { width: 14px; height: 14px; bottom: 15%; right: -8%; }
+}
+
+/* Tablet (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  .top-nav {
+    padding: 14px 20px;
+    gap: 15px;
+  }
+
+  .top-nav-left {
+    font-size: 0.8rem;
+    min-width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .top-nav-right {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .hamburger { display: inline-block; }
+  .top-nav-right .top-nav-link { display: none; }
+
+  .top-nav-link {
+    font-size: 0.8rem;
     letter-spacing: 0.5px;
   }
 
@@ -1118,47 +1461,47 @@ button:hover, input[type="submit"]:hover {
     bottom: 15px;
     right: 15px;
     padding: 8px 16px;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     gap: 4px;
   }
 
   .header {
-    padding: 100px 15px 40px 15px;
+    padding: 90px 25px 40px 25px;
     min-height: auto;
   }
 
   .header-container {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 25px;
   }
 
   .header-image {
     width: 100%;
-    height: 250px;
+    height: 280px;
     margin: 0 auto;
   }
 
   .yellow-circle {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
   }
 
   .profile-img {
-    width: 180px;
+    width: 200px;
   }
 
   .header-content h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     line-height: 1.2;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.7px;
   }
 
   .header-content h1 .highlight {
-    padding: 3px 10px;
+    padding: 4px 12px;
   }
 
   .header-content p {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     line-height: 1.6;
   }
 
@@ -1184,7 +1527,7 @@ button:hover, input[type="submit"]:hover {
   }
 
   .software-grid {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 15px;
   }
 
@@ -1193,41 +1536,37 @@ button:hover, input[type="submit"]:hover {
   }
 
   .software-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 1rem;
+    width: 55px;
+    height: 55px;
+    font-size: 1.1rem;
   }
 
   .software-name {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
 
   .section {
-    padding: 40px 15px;
+    padding: 40px 20px;
     margin: 30px auto;
+    width: calc(100% - 40px);
   }
 
   .section h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 20px;
   }
 
-  .techstack-title {
-    font-size: 2rem !important;
-    letter-spacing: 3px !important;
-  }
-
   .experience-item {
-    padding: 15px;
+    padding: 18px;
     margin-bottom: 15px;
   }
 
   .experience-title {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .experience-description {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .contact-container {
@@ -1237,75 +1576,163 @@ button:hover, input[type="submit"]:hover {
 
   .contact-card {
     max-width: 100%;
-    padding: 25px 15px;
+    padding: 30px 20px;
   }
 
   .contact-card h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   .form-group label {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   input, textarea {
-    font-size: 0.9rem;
-    padding: 10px 12px;
+    font-size: 0.95rem;
+    padding: 11px 13px;
   }
 
   button, input[type="submit"] {
-    padding: 12px 30px;
-    font-size: 0.85rem;
+    padding: 12px 32px;
+    font-size: 0.9rem;
   }
 
   .footer-section {
-    padding: 40px 15px;
+    padding: 40px 20px;
   }
 
   .footer-title {
-    font-size: 1.8rem;
-  }
-
-  .skills-track {
-    animation: scrollHorizontal 20s linear infinite;
+    font-size: 2rem;
   }
 
   .skill-badge {
     padding: 8px 16px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 
   .footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
   }
 
   .footer-col h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .footer-col a,
   .footer-col p {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .footer-bottom {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+    flex-direction: row;
   }
 
   .footer-credit {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 
   .footer-socials {
-    gap: 10px;
+    gap: 12px;
   }
 
   .footer-social-icon {
-    width: 35px;
-    height: 35px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .dot-1 { width: 20px; height: 20px; top: 8%; left: -5%; }
+  .dot-2 { width: 14px; height: 14px; top: 10%; left: 3%; }
+  .dot-3 { width: 18px; height: 18px; bottom: 20%; right: -6%; }
+}
+
+/* Large Desktop (1025px+) */
+@media (min-width: 1025px) {
+  .top-nav {
+    padding: 20px 60px;
+  }
+
+  .header {
+    padding: 120px 60px;
+  }
+
+  .header-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .header-image {
+    width: 350px;
+    height: 400px;
+  }
+
+  .section {
+    max-width: 1200px;
+    padding: 60px 60px;
+  }
+
+  .software-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .contact-card {
+    max-width: 800px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Medium Desktop (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .top-nav {
+    padding: 18px 40px;
+  }
+
+  .header {
+    padding: 100px 40px 50px 40px;
+  }
+
+  .header-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+
+  .header-image {
+    width: 320px;
+    height: 360px;
+  }
+
+  .header-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .header-content p {
+    font-size: 0.95rem;
+  }
+
+  .section {
+    max-width: 1000px;
+    padding: 50px 40px;
+  }
+
+  .section h2 {
+    font-size: 2.2rem;
+  }
+
+  .software-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

@@ -2,7 +2,7 @@ import GlowCard from "./GlowCard";
 
 function About() {
   return (
-    <section className="section reveal" id="about">
+    <section id="about" className="section reveal">
       <h2>About Me!!</h2>
       <div className="about-grid">
         <div className="about-item">
@@ -35,14 +35,28 @@ function About() {
 
       <div className="experience-section" style={{marginTop: '24px'}}>
         <h3 className="section-subtitle">Experience</h3>
-        {/* Single experience entry copied from LinkedIn */}
+        
+        {/* IIIT Hyderabad experience */}
+        <div style={{marginTop: '12px'}}>
+          <GlowCard>
+            <div className="experience-item">
+              <div className="experience-period">Aug 2025 - Present</div>
+              <div className="experience-title">Junior Developer — IIIT Hyderabad RCTS Lab</div>
+              <div className="experience-description" style={{marginTop: '8px'}}>
+                Working as a Junior Developer at the RCTS (Raj Reddy Center for Technology and Society) Lab at IIIT Hyderabad, contributing to research and development projects in AI and machine learning.
+              </div>
+            </div>
+          </GlowCard>
+        </div>
+
+        {/* Cognifyz experience */}
         <div style={{marginTop: '12px'}}>
           <GlowCard>
             <div className="experience-item">
               <div className="experience-period">Jun 2025 - Jul 2025 · 2 mos</div>
               <div className="experience-title">Front-end development intern — Cognifyz Technologies · Internship</div>
               <div className="experience-description" style={{marginTop: '8px'}}>
-                📌 Working on front-end development tasks assigned by Cognifyz. 📌 Gaining hands-on experience in HTML, CSS, JavaScript, and responsive web design. 📌 Submitting tasks through video demonstrations and project uploads. 📌 Promoting work via LinkedIn using #cognifyz #cognifyzTech #cognifyzTechnologies.
+                 Worked on front-end development tasks assigned by Cognifyz.  Gaining hands-on experience in HTML, CSS, JavaScript, and responsive web design. Submitting tasks through video demonstrations and project uploads.
               </div>
               <div className="experience-description" style={{marginTop: '10px', fontWeight: 600, color: '#c2a4ff'}}>
                 Skills: Front-End Development · HTML · Cascading Style Sheets (CSS) · JavaScript · Responsive Web Design

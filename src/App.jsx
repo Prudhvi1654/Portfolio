@@ -1,6 +1,5 @@
 import { useScrollReveal } from "./useScrollReveal";
 import Navigation from "./components/Navigation";
-import SocialSidebar from "./components/socialsidebar";
 import ResumeButton from "./components/resumebutton";
 import Header from "./components/Header";
 import About from "./components/About";
@@ -27,7 +26,6 @@ function App() {
         <span className="bg-dot s10"></span>
       </div>
       <Navigation />
-      <SocialSidebar />
       <ResumeButton />
       <Header id="header" />
       <About id="about" />

@@ -17,7 +17,7 @@ function Projects() {
   ];
 
   return (
-    <section className="section reveal">
+    <section id="experience" className="section reveal">
       <h2>Projects</h2>
       {experiences.map((exp, index) => (
         <a 

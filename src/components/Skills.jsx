@@ -14,7 +14,6 @@ function Skills() {
     { name: "OpenCV", icon: "cv", url: "https://opencv.org/" },
     { name: "Node.js", icon: "Nd", url: "https://nodejs.org/" },
     { name: "GitHub", icon: "GH", url: "https://github.com/" },
-    { name: "AWS", icon: "AWS", url: "https://aws.amazon.com/" }
   ];
 
   return (

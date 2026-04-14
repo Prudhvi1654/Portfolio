@@ -4,20 +4,27 @@ import emailjs from '@emailjs/browser';
 function Contact() {
   const form = useRef();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
-      .then((result) => {
-          alert('Message sent successfully!');
-          e.target.reset();
-      }, (error) => {
-          alert('Failed to send message. Please try again.');
-      });
-  };
+  emailjs.sendForm(
+    'service_p6lrh9h',
+    'template_dx5ohrb',
+    form.current,
+    '-FFAx7Wxwtd4Jmjn2'
+  )
+  .then(() => {
+    alert('Message sent successfully!');
+    e.target.reset();
+  })
+  .catch((error) => {
+    console.log(error);
+    alert('Failed to send message.');
+  });
+};
 
   return (
-    <section className="section reveal" id="contact">
+  <section id="contact" className="section reveal">
       <div className="contact-container">
         <div className="contact-card">
           <h2>Get In Touch</h2>
