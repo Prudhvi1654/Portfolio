@@ -1307,6 +1307,64 @@ button:hover, input[type="submit"]:hover {
     font-size: 0.65rem;
   }
 
+  .techstack-title {
+    font-size: 1.75rem !important;
+    letter-spacing: 1px !important;
+    line-height: 1.05 !important;
+    margin-bottom: 22px !important;
+    width: 100%;
+    padding: 0 10px;
+    white-space: normal !important;
+    word-break: break-word;
+  }
+
+  .techstack-my,
+  .techstack-text {
+    display: block;
+  }
+
+  .techstack-text {
+    font-size: 1.75rem;
+  }
+
+  .software-grid {
+    grid-template-columns: repeat(1, minmax(100%, 1fr));
+    gap: 14px;
+  }
+
+  .software-item {
+    padding: 16px;
+  }
+
+  .software-name {
+    font-size: 0.8rem;
+    word-break: break-word;
+    white-space: normal;
+  }
+
+  .software-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 1.05rem;
+  }
+
+  .skills-track {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    animation: none;
+  }
+
+  .scrolling-skills {
+    overflow: visible;
+  }
+
+  .skill-badge {
+    flex: 0 0 auto;
+    padding: 8px 16px;
+  }
+
   .section {
     padding: 25px 12px;
     margin: 20px auto;
@@ -1543,6 +1601,38 @@ button:hover, input[type="submit"]:hover {
 
   .software-name {
     font-size: 0.8rem;
+    word-break: break-word;
+    white-space: normal;
+  }
+
+  .techstack-title {
+    font-size: 2.4rem !important;
+    letter-spacing: 3px !important;
+    margin-bottom: 30px !important;
+    line-height: 1.05 !important;
+  }
+
+  .skills-track {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    animation: none;
+  }
+
+  .scrolling-skills {
+    overflow: visible;
+  }
+
+  .skill-badge {
+    flex: 0 0 auto;
+    padding: 8px 16px;
+  }
+
+  .techstack-my {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 8px;
   }
 
   .section {
