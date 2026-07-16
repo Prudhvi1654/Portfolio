@@ -1,6 +1,22 @@
 function Projects() {
   const experiences = [
     {
+  title: "AI Daily News Summarizer",
+  description:
+    "AI-powered web application that summarizes lengthy news articles using Ollama and the Qwen2.5 model with a React frontend and Flask backend.",
+  tech: [
+    "React",
+    "Flask",
+    "Python",
+    "Ollama",
+    "Qwen2.5",
+    "LoRA"
+  ],
+  github: "https://github.com/Prudhvi1654/DailyNewsSummarizer",
+  live: "https://daily-news-summarizer.vercel.app/",
+  image: "/images/news-summarizer.png"
+},
+    {
       period: "May 2025 - June",
       title: "Cartoonify an Image ",
       description:
